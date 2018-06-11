@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: creating astronomical object table
+      author: alcox
+      changes:
+        - createTable:
+            tableName: astronomical_objects
+            columns:
+              - column:
+                  name: guid
+                  type: varchar(36)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(36)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: other_names
+                  type: varchar(256)
+              - column:
+                  name: type
+                  type: varchar(64)
+              - column:
+                  name: constellation
+                  type: varchar(64)
+              - column:
+                  name: right_ascension
+                  type: varchar(36)
+              - column:
+                  name: declination
+                  type: varchar(36)
+              - column:
+                  name: apparent_magnitude
+                  type: varchar(36)
