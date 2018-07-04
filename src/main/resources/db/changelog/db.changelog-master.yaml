@@ -35,3 +35,37 @@ databaseChangeLog:
               - column:
                   name: apparent_magnitude
                   type: varchar(36)
+  - changeSet:
+      id: creating audit table
+      author: alcox
+      changes:
+        - createTable:
+            tableName: audit
+            columns:
+              - column:
+                  name: guid
+                  type: varchar(36)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: audit_timestamp
+                  type: timestamp
+                  constraints:
+                    nullable: false
+                    defaultValueComputed: current_timestamp
+              - column:
+                  name: actor
+                  type: varchar(36)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: action
+                  type: varchar(36)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: method
+                  type: varchar(36)
+                  constraints:
+                    nullable: false

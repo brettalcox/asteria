@@ -31,6 +31,7 @@ public class AstronomicalObject extends AbstractEntity {
     private String apparentMagnitude;
 
     private AstronomicalObject(Builder builder) {
+        super(builder.guid);
         this.name = builder.name;
         this.otherNames = builder.otherNames;
         this.type = builder.type;
@@ -40,7 +41,9 @@ public class AstronomicalObject extends AbstractEntity {
         this.apparentMagnitude = builder.apparentMagnitude;
     }
 
-    protected AstronomicalObject() {}
+    protected AstronomicalObject() {
+        super();
+    }
 
     public String getName() {
         return name;

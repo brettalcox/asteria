@@ -13,12 +13,18 @@ public class AbstractEntity {
     @Column(name = "guid", columnDefinition = "VARCHAR(36)")
     private String guid;
 
+    protected AbstractEntity(String guid) {
+        this.guid = guid;
+    }
+
+    protected AbstractEntity() {}
+
     public String getGuid() {
         return guid;
     }
 
     public abstract static class AbstractBuilder<T extends AbstractEntity, B extends AbstractBuilder<T, B>> {
-        private String guid;
+        protected String guid;
 
         public B guid(String guid) {
             this.guid = guid;

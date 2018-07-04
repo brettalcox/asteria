@@ -2,23 +2,33 @@ package com.bta.astro.asteria.controller;
 
 import com.bta.astro.asteria.entity.AstronomicalObject;
 import com.bta.astro.asteria.repository.AstronomicalObjectRepository;
+import com.bta.astro.asteria.service.AstronomicalObjectsService;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.List;
+import java.util.UUID;
 
 @RequestMapping("astronomical-objects")
 @RestController
 public class AstronomicalObjectController {
 
-//    @Autowired
-//    private AstronomicalObjectRepository repository;
-//
+    @Autowired
+    private AstronomicalObjectsService astronomicalObjectsService;
+
+    @GetMapping(value = "/get-all")
+    public Iterable<AstronomicalObject> getAstronomicalObjects() {
+        return astronomicalObjectsService.getAstronomicalObjects();
+    }
+
 //    @GetMapping
 //    public String migrate() throws Exception {
 //        File file = new File("C:\\Users\\brett\\Documents\\ngc.txt");
@@ -42,6 +52,7 @@ public class AstronomicalObjectController {
 //                }
 //            }
 //        }
+//
 //        return "success";
 //    }
 }
